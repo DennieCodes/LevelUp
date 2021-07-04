@@ -21,3 +21,5 @@ The project will be developed in stages with core functionality and features int
 - July 1st. Took sketches and created higher fidelity first drafts in Figma. Just focused on the mobile designs first which meant figuring out core functionality.
 
 - July 2nd. Planning to make this project MERN stack as that is my foundation. Initialized project, created repo, began the Readme file to document development. Brainstorming some decisions about the project including database schema, authentication options and different tech to use.
+
+- July 3rd. Created base files and directory structure for the models and routes planned for this project. User, Todo and Activity
