@@ -11,6 +11,10 @@ connectMongoDatabase();
 app.use(express.json({ extended: false }));
 
 // Define route controllers
+app.get("/", (req, res) => {
+  res.send("API running");
+});
+
 app.use("/users", require("./routes/users"));
 app.use("/todos", require("./routes/todos"));
 app.use("/activities", require("./routes/activities"));

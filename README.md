@@ -23,3 +23,7 @@ The project will be developed in stages with core functionality and features int
 - July 2nd. Planning to make this project MERN stack as that is my foundation. Initialized project, created repo, began the Readme file to document development. Brainstorming some decisions about the project including database schema, authentication options and different tech to use.
 
 - July 3rd. Created base files and directory structure for the models and routes planned for this project. User, Todo and Activity
+
+- July 4th. Happy Independence Day!
+
+- July 5th. Started controllers for the user model REST functions. Added Express Validation and checks for name, password, email from req.body.
