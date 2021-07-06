@@ -14,14 +14,17 @@ module.exports = function (params) {
       case "nameRequired":
         returnArray.push(check("name", "Name is required").not().isEmpty());
         break;
+
       case "emailRequired":
         returnArray.push(check("email", "Email is required").not().isEmpty());
         break;
+
       case "emailValid":
         returnArray.push(
           check("email", "Please include a valid email").isEmail()
         );
         break;
+
       case "passwordLength":
         returnArray.push(
           check(
@@ -30,9 +33,11 @@ module.exports = function (params) {
           ).isLength({ min: 6 })
         );
         break;
+
       case "passwordRequired":
         returnArray.push(check("password", "Password is required").exists());
         break;
+
       case "textRequired":
         returnArray.push(check("text", "Text is required").not().isEmpty());
         break;

@@ -5,7 +5,14 @@ const router = express.Router();
 const validator = require("../middleware/validator");
 
 // Controller function modules
-const { UserGetAll, UserRegister } = require("../controllers/users");
+const {
+  UserGetAll,
+  UserRegister,
+  UserLogin,
+  UserGetById,
+  UserDelete,
+  UserUpdate,
+} = require("../controllers/users");
 
 // @route   GET /users
 // @desc    Get all users
@@ -25,5 +32,29 @@ router.post(
   ]),
   UserRegister
 );
+
+// @route   GET /users/login
+// @desc    Login user
+// @access  Public
+router.post(
+  "/login",
+  validator(["emailRequired", "passwordRequired"]),
+  UserLogin
+);
+
+// @route   GET /users/:id
+// @desc    Get User by Id
+// @access  Private
+router.get("/:id", UserGetById);
+
+// @route   DELETE /users/:id
+// @desc    Get User with associated Id
+// @access  Private
+router.delete("/:id", UserDelete);
+
+// @route   PUT /users/:id
+// @desc    Update User
+// @access  Private
+router.put("/:id", UserUpdate);
 
 module.exports = router;
