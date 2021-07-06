@@ -27,3 +27,5 @@ The project will be developed in stages with core functionality and features int
 - July 4th. Happy Independence Day!
 
 - July 5th. Started controllers for the user model REST functions. Added Express Validation and checks for name, password, email from req.body.
+
+- July 6th. Completed the user REST API routing and controller functions. Added express-sessions and integrated Authentication.

@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Express validation middleware
 const validator = require("../middleware/validator");
+const isAuth = require("../middleware/isAuth");
 
 // Controller function modules
 const {
@@ -55,6 +56,6 @@ router.delete("/:id", UserDelete);
 // @route   PUT /users/:id
 // @desc    Update User
 // @access  Private
-router.put("/:id", UserUpdate);
+router.put("/:id", isAuth, UserUpdate);
 
 module.exports = router;

@@ -106,7 +106,11 @@ module.exports = {
       }
 
       // NOTE: Attach Express Sessions for Authentication
-      // res.json(user);
+
+      // Set session authentication flag and associate with user
+      req.session.user_id = user._id;
+      req.session.isAuth = true;
+
       res.send("User was successfully logged in");
     } catch (error) {
       console.log(`There was an error: ${error.message}`);

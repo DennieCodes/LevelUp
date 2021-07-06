@@ -10,6 +10,10 @@ connectMongoDatabase();
 // Initialize express middleware
 app.use(express.json({ extended: false }));
 
+// Connect Express Session and MongoDB Session
+const connectExpressSession = require("./config/connectExpressSession");
+app.use(connectExpressSession());
+
 // Define route controllers
 app.get("/", (req, res) => {
   res.send("API running");
