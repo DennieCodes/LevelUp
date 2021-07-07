@@ -126,7 +126,7 @@ module.exports = {
     const userId = req.params.id;
 
     // --------------------------
-    // NOTE: will need to check id matches authenticated user
+    // NOTE: may need to check id matches authenticated user depending
 
     // Search database for user
     try {
@@ -213,5 +213,15 @@ module.exports = {
     } catch (error) {
       console.log(`There was an error: ${error.message}`);
     }
+  },
+
+  ///////////////////////
+  // @route POST /users/logout
+  // Logout User
+  UserLogout(req, res) {
+    req.session.destroy((err) => {
+      if (err) throw err;
+      res.send("User was logged out");
+    });
   },
 };

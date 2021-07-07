@@ -13,6 +13,7 @@ const {
   UserGetById,
   UserDelete,
   UserUpdate,
+  UserLogout,
 } = require("../controllers/users");
 
 // @route   GET /users
@@ -57,5 +58,10 @@ router.delete("/:id", UserDelete);
 // @desc    Update User
 // @access  Private
 router.put("/:id", isAuth, UserUpdate);
+
+// @route   POST /users/logout
+// @desc    Logout current user
+// @access  Private
+router.post("/logout", UserLogout);
 
 module.exports = router;

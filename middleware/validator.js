@@ -15,6 +15,10 @@ module.exports = function (params) {
         returnArray.push(check("name", "Name is required").not().isEmpty());
         break;
 
+      case "authorRequired":
+        returnArray.push(check("author", "Author is required").not().isEmpty());
+        break;
+
       case "emailRequired":
         returnArray.push(check("email", "Email is required").not().isEmpty());
         break;
@@ -38,12 +42,31 @@ module.exports = function (params) {
         returnArray.push(check("password", "Password is required").exists());
         break;
 
+      case "descriptionRequired":
+        returnArray.push(
+          check("description", "Description is required").not().isEmpty()
+        );
+        break;
+
+      case "scheduleRequired":
+        returnArray.push(
+          check("schedule", "Schedule is required").not().isEmpty()
+        );
+        break;
+
+      case "tagsRequired":
+        returnArray.push(
+          check("tags", "Tag(s) is/are required").not().isEmpty()
+        );
+        break;
+
       case "textRequired":
         returnArray.push(check("text", "Text is required").not().isEmpty());
         break;
-      case "fromDateRequired":
+
+      case "createdDateRequired":
         returnArray.push(
-          check("from", "From date is required").not().isEmpty()
+          check("created", "Created date is required").not().isEmpty()
         );
         break;
       default:

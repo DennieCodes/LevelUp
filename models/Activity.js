@@ -26,3 +26,5 @@ const ActivitySchema = new Schema({
 });
 
 module.exports = Activity = mongoose.model("activity", ActivitySchema);
+
+// schedule
