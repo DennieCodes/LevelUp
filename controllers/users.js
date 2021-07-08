@@ -105,8 +105,6 @@ module.exports = {
         });
       }
 
-      // NOTE: Attach Express Sessions for Authentication
-
       // Set session authentication flag and associate with user
       req.session.user_id = user._id;
       req.session.isAuth = true;
@@ -125,8 +123,13 @@ module.exports = {
     // Retrieve id parameter
     const userId = req.params.id;
 
-    // --------------------------
-    // NOTE: may need to check id matches authenticated user depending
+    // Check that the authenticated user matches the user whose detail is being requested
+    if (userId !== req.session.user_id) {
+      return res
+        .status(403)
+        .json({ errors: [{ msg: "You do not have authorization" }] })
+        .send("You are not authorized to view that user details");
+    }
 
     // Search database for user
     try {
@@ -137,7 +140,7 @@ module.exports = {
         return res
           .status(404)
           .json({ errors: [{ msg: "That user is not registered" }] })
-          .redirect("/register");
+          .send("That user was not found");
       }
 
       // Return User by Id
@@ -155,8 +158,13 @@ module.exports = {
     // Retrieve id parameter
     const userId = req.params.id;
 
-    // --------------------------
-    // NOTE: will need to check id matches authenticated user
+    // Check that the authenticated user matches the user whose detail is being requested
+    if (userId !== req.session.user_id) {
+      return res
+        .status(403)
+        .json({ errors: [{ msg: "You do not have authorization" }] })
+        .send("You are not authorized");
+    }
 
     // Search database for user
     try {
@@ -167,11 +175,14 @@ module.exports = {
         return res
           .status(404)
           .json({ errors: [{ msg: "That user is not registered" }] })
-          .redirect("/register");
+          .send("That user is not registered");
       }
 
       // Delete User
       user = await User.findOneAndDelete({ _id: userId });
+
+      // Logout User and terminate session
+      UserLogout(req, res);
 
       res.send("The user was deleted");
     } catch (error) {
@@ -190,11 +201,15 @@ module.exports = {
     // Destructure request data
     const { username, email, password } = req.body;
 
-    // --------------------------
-    // NOTE: will need to check id matches authenticated user
+    // Check that the authenticated user matches the user whose detail is being requested
+    if (userId !== req.session.user_id) {
+      return res
+        .status(403)
+        .json({ errors: [{ msg: "You do not have authorization" }] })
+        .send("You are not authorized");
+    }
 
     // Search database for user
-
     try {
       let user = await User.findOneAndUpdate(
         { _id: userId },
@@ -205,8 +220,7 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ errors: [{ msg: "That user is not registered" }] })
-          .redirect("/register");
+          .json({ errors: [{ msg: "That user is not registered" }] });
       }
 
       res.send("The user was updated");

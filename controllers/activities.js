@@ -19,8 +19,6 @@ module.exports = {
     const { name, description, schedule, tags } = req.body;
     const author = req.session.user_id;
 
-    // date will be updated by app
-
     try {
       // Construct new Activity object
       const activity = new Activity({
@@ -53,11 +51,22 @@ module.exports = {
     try {
       const activity = await Activity.findOne({ _id: activityId });
 
-      // Return a 404 error if user is not found
+      // Return a 404 error if activity is not found
       if (!activity) {
         return res
           .status(404)
           .json({ errors: [{ msg: "That activity is not registered" }] });
+      }
+
+      // Check that the activity belongs to the user
+      if (activity.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization to that activity",
+            },
+          ],
+        });
       }
 
       // Return activity by Id
@@ -90,7 +99,18 @@ module.exports = {
           .send("That activity is not registered");
       }
 
-      // Delete User
+      // Check that the activity belongs to the user
+      if (activity.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization to that activity",
+            },
+          ],
+        });
+      }
+
+      // Delete Activity
       activity = await Activity.findOneAndDelete({ _id: activityId });
 
       res.send("The Activity was deleted");
@@ -107,8 +127,6 @@ module.exports = {
     // Retrieve id parameter
     const activityId = req.params.id;
 
-    // NOTE: Check ownership of the activity
-
     // Destructure request body
     const { name, description, schedule, tags } = req.body;
 
@@ -124,6 +142,18 @@ module.exports = {
           .status(404)
           .json({ errors: [{ msg: "That activity is not registered" }] });
       }
+
+      // Check that the activity belongs to the user
+      if (activity.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization to that activity",
+            },
+          ],
+        });
+      }
+
       res.send("The activity was updated");
     } catch (error) {
       console.log(`There was an error: ${error.message}`);

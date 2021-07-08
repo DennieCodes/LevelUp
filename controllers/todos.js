@@ -60,6 +60,17 @@ module.exports = {
           .json({ errors: [{ msg: "That todo is not registered" }] });
       }
 
+      // Check that the todo belongs to the user
+      if (todo.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization",
+            },
+          ],
+        });
+      }
+
       // Return todo by Id
       res.json(todo);
     } catch (error) {
@@ -75,9 +86,6 @@ module.exports = {
     // Retrieve id parameter
     const todoId = req.params.id;
 
-    // --------------------------
-    // NOTE: will need to check id matches authenticated user
-
     // Search database for todo
     try {
       let todo = await Todo.findOne({ _id: todoId });
@@ -90,7 +98,18 @@ module.exports = {
           .send("That todo is not registered");
       }
 
-      // Delete User
+      // Check that the todo belongs to the user
+      if (todo.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization",
+            },
+          ],
+        });
+      }
+
+      // Delete Todo
       activity = await Todo.findOneAndDelete({ _id: todoId });
 
       res.send("The Todo was deleted");
@@ -107,23 +126,37 @@ module.exports = {
     // Retrieve id parameter
     const todoId = req.params.id;
 
-    // NOTE: Check ownership of the todo
-
     // Destructure Todo values from request body
     const { name, repeats, tags } = req.body;
 
     try {
-      let todo = await Todo.findOneAndUpdate(
-        { _id: todoId },
-        { name, repeats, tags }
-      );
+      // Search for todo and compare ownership before the call to update
+      let todo = await Todo.findOne({ _id: todoId });
 
-      // Return a 404 error if activity is not found
+      // Return a 404 error if todo is not found
       if (!todo) {
         return res
           .status(404)
           .json({ errors: [{ msg: "That todo is not registered" }] });
       }
+
+      // Check that the todo belongs to the user
+      if (todo.author !== req.session.user_id) {
+        return res.status(403).json({
+          errors: [
+            {
+              msg: "Logged in user does not have authorization",
+            },
+          ],
+        });
+      }
+
+      // Update Todo with new data
+      todo = await Todo.findOneAndUpdate(
+        { _id: todoId },
+        { name, repeats, tags }
+      );
+
       res.send("The todo was updated");
     } catch (error) {
       console.log(`There was an error: ${error.message}`);
