@@ -31,3 +31,5 @@ The project will be developed in stages with core functionality and features int
 - July 6th. Completed the user REST API routing and controller functions. Added express-sessions and integrated Authentication.
 
 - July 7th. Expanded express-validator middleware to cover Activity routes/controllers. Added user logout route and function to terminate session. Completed the Activities REST API router and controller functions.
+
+- July 8th. Completed Todo routes and controller functions.

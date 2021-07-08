@@ -22,6 +22,7 @@ module.exports = {
     // date will be updated by app
 
     try {
+      // Construct new Activity object
       const activity = new Activity({
         name,
         description,
@@ -30,7 +31,7 @@ module.exports = {
         author,
       });
 
-      //
+      // Save new Activity item to Database
       await activity.save();
 
       res.send("New Activity was created");
@@ -121,8 +122,7 @@ module.exports = {
       if (!activity) {
         return res
           .status(404)
-          .json({ errors: [{ msg: "That user is not registered" }] })
-          .redirect("/register");
+          .json({ errors: [{ msg: "That activity is not registered" }] });
       }
       res.send("The activity was updated");
     } catch (error) {
