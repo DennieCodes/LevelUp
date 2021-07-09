@@ -33,3 +33,5 @@ The project will be developed in stages with core functionality and features int
 - July 7th. Expanded express-validator middleware to cover Activity routes/controllers. Added user logout route and function to terminate session. Completed the Activities REST API router and controller functions.
 
 - July 8th. Completed Todo routes and controller functions. Added some code to check ownership of Todos, Activity to authenticated user.
+
+- July 9th. Initialized front end portion of project with create-react-app. Added concurrently and updated scripts to run backend and frontend in one command.
