@@ -1,5 +1,7 @@
+import LevelUp from "./LevelUp";
+
 function App() {
-  return <></>;
+  return <LevelUp></LevelUp>;
 }
 
 export default App;

@@ -35,3 +35,7 @@ The project will be developed in stages with core functionality and features int
 - July 8th. Completed Todo routes and controller functions. Added some code to check ownership of Todos, Activity to authenticated user.
 
 - July 9th. Initialized front end portion of project with create-react-app. Added concurrently and updated scripts to run backend and frontend in one command.
+
+- July 10th. Set up Sass project styling folders and structure.
+
+- July 11th. Added React-router basic structure folders and components.
