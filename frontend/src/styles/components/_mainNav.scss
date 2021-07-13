@@ -1,0 +1,25 @@
+.mainNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  &-branding img {
+    height: 2em;
+  }
+
+  &-navbar {
+    display: flex;
+    flex-direction: row;
+
+    &__li {
+      margin: 0 0.75em;
+    }
+  }
+
+  @include atScreenTablet {
+    & {
+      border: 1px solid red;
+    }
+  }
+}

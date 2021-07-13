@@ -1,0 +1,31 @@
+// NOTE: Mobile first development so mobile styling will be the default
+
+// @mixin atScreenMobile {
+//   @media (480px) {
+//     @content;
+//   }
+// }
+
+@mixin atScreenTablet {
+  @media (min-width: 481px) {
+    @content;
+  }
+}
+
+@mixin atScreenTabletLandscape {
+  @media (min-width: 786px) {
+    @content;
+  }
+}
+
+@mixin atScreenDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin atScreenDesktopWidescreen {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

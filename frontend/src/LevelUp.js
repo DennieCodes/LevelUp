@@ -12,7 +12,7 @@ function LevelUp() {
       <Header />
 
       <Switch>
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/"></Route>
         <Route component={Routes}></Route>
       </Switch>
 

@@ -39,3 +39,7 @@ The project will be developed in stages with core functionality and features int
 - July 10th. Set up Sass project styling folders and structure.
 
 - July 11th. Added React-router basic structure folders and components.
+
+- July 12th. Added Header and MainNav Components.
+
+- July 13th. Added main navigation Component along with NavLinks and Links. Added SASS/mixin, media query breakpoints and color variables
