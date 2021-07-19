@@ -1,46 +1,40 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import styled from "styled-components";
+
+import Navbar from "./Navbar";
 
 // Logo is imported in this manner to enable use of the logo in this page
 // NOTE: Explore using some method where the image directory can be passed in so this component is resuable.
 import logo from "../../images/logoipsum.svg";
 
-function MainNav({ homeDetails }) {
+// Component Styling
+const StyledMainNav = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const BrandingLink = styled(Link)`
+  height: 2em;
+`;
+
+// Component: MainNav
+function MainNav({ homeDetails, navigationDetails }) {
   const { route, title, alt } = homeDetails;
   // Navigation options will need to vary depending on if the current user is authenticated
   // Not Auth: Login / Register
   // Auth: Logout
 
-  // Might need a possible dashboard so the
-
   return (
-    <div className="mainNav">
-      <Link to={route} className="mainNav-branding">
+    <StyledMainNav>
+      <BrandingLink to={route}>
         <img src={logo} alt={alt} />
-      </Link>
+      </BrandingLink>
 
-      <nav className="mainNav-navbar">
-        <li className="mainNav-navbar__li">
-          <NavLink className="mainNav-navbar__link" to="/register">
-            Register
-          </NavLink>
-        </li>
-        <li className="mainNav-navbar__li">
-          <NavLink className="mainNav-navbar__link" to="/login">
-            Login
-          </NavLink>
-        </li>
-        <li className="mainNav-navbar__li">
-          <NavLink className="mainNav-navbar__link" to="/activities">
-            Activities
-          </NavLink>
-        </li>
-        <li className="mainNav-navbar__li">
-          <NavLink className="mainNav-navbar__link" to="/todos">
-            Todos
-          </NavLink>
-        </li>
-      </nav>
-    </div>
+      <Navbar navigationDetails={navigationDetails} />
+    </StyledMainNav>
   );
 }
 

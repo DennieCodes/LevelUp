@@ -43,3 +43,9 @@ The project will be developed in stages with core functionality and features int
 - July 12th. Added Header and MainNav Components.
 
 - July 13th. Added main navigation Component along with NavLinks and Links. Added SASS/mixin, media query breakpoints and color variables
+
+- July 14th. Researching styled-components, Theme-UI for refactor styling.
+
+- July 17th. Created new branch and added styled-components foundation.
+
+- July 18th. Removed Sass styling folders and structure. Added styled-components, Theme-UI. Merged styled-components into main branch
