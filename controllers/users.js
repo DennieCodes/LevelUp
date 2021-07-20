@@ -63,7 +63,7 @@ module.exports = {
 
       // NOTE: Response after successful register
       // NOTE: After Authentication is implemented remove the response
-      res.send("User was successfully registered");
+      res.json({ user });
     } catch (error) {
       console.log(`There was an error: ${error.message}`);
     }

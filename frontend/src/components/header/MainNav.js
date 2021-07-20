@@ -1,3 +1,5 @@
+/** @jsxImportSource theme-ui */
+
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -13,7 +15,8 @@ const StyledMainNav = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  padding: 0.5em;
 `;
 
 const BrandingLink = styled(Link)`
@@ -28,7 +31,11 @@ function MainNav({ homeDetails, navigationDetails }) {
   // Auth: Logout
 
   return (
-    <StyledMainNav>
+    <StyledMainNav
+      sx={{
+        width: ["25%", "35%", "50%", "75%"],
+      }}
+    >
       <BrandingLink to={route}>
         <img src={logo} alt={alt} />
       </BrandingLink>
