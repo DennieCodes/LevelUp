@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { Redirect } from "react-router-dom";
-
 // controller
 import { register } from "./controllers/register";
 
@@ -36,7 +34,7 @@ const StyledButton = styled.button`
 `;
 
 // Register Component
-const Register = () => {
+const Register = (props) => {
   // Set State for form input control
   const [formData, setFormData] = useState({
     username: "",
@@ -49,7 +47,11 @@ const Register = () => {
     e.preventDefault();
     const { username, email, password } = formData;
 
-    await register(username, email, password);
+    // Redirect to Login upon successful registration or redirec to dashboard
+    if (await register(username, email, password)) props.history.push("/login");
+    else props.history.push("/");
+
+    // NOTE: We will probably want some kind of response so an alert system will be necessary
   };
 
   // onChange handler for controlled components

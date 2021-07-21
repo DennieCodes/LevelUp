@@ -51,3 +51,5 @@ The project will be developed in stages with core functionality and features int
 - July 18th. Removed Sass styling folders and structure. Added styled-components, Theme-UI. Merged styled-components into main branch
 
 - July 20th. Added Register Component and controller.
+
+- July 21st. Added Login Component and controller.
