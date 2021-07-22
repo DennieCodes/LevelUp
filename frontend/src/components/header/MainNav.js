@@ -1,6 +1,9 @@
 /** @jsxImportSource theme-ui */
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { UserContext } from "../../context/userContext";
 
 import styled from "styled-components";
 
@@ -26,6 +29,10 @@ const BrandingLink = styled(Link)`
 // Component: MainNav
 function MainNav({ homeDetails, navigationDetails }) {
   const { route, title, alt } = homeDetails;
+
+  const { authUser } = useContext(UserContext);
+  console.log(`Auth user: `, authUser);
+
   // Navigation options will need to vary depending on if the current user is authenticated
   // Not Auth: Login / Register
   // Auth: Logout

@@ -52,4 +52,4 @@ The project will be developed in stages with core functionality and features int
 
 - July 20th. Added Register Component and controller.
 
-- July 21st. Added Login Component and controller.
+- July 21st. Added Login Component and controller. Added ContextAPI for state management.
