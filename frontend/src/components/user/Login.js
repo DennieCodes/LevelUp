@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 
+// Controller
 import { login } from "./controllers/login";
+
+import { UserContext } from "../../context/userContext";
 
 // Component Styling
 const StyledSection = styled.section`
@@ -41,16 +44,22 @@ const Login = (props) => {
     password: "",
   });
 
+  // Dispatch
+  const { dispatch } = useContext(UserContext);
+
   // onSubmit handler for form submission
   const onSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
 
     // Redirect to Login upon successful registration or redirec to dashboard
-    login(email, password);
-    props.history.push("/");
+    const user = login(email, password);
 
-    // NOTE: We will probably want some kind of response so an alert system will be necessary
+    // Update state to reflect authenticated user
+    dispatch({ type: "USER_LOGIN", task: user });
+
+    // Return to home page
+    props.history.push("/");
   };
 
   // onChange handler for controlled components

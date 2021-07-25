@@ -21,7 +21,7 @@ module.exports = {
   },
 
   // @route   POST /users/register
-  // @desc    Get all users
+  // @desc    Register a new user
   // @access  Public
 
   async UserRegister(req, res) {
@@ -109,7 +109,9 @@ module.exports = {
       req.session.user_id = user._id;
       req.session.isAuth = true;
 
-      res.send("User was successfully logged in");
+      // Return username and id in response
+      const { username, id } = user;
+      res.json({ username, id });
     } catch (error) {
       console.log(`There was an error: ${error.message}`);
     }

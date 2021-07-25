@@ -15,7 +15,7 @@ const connectExpressSession = () => {
   return session({
     secret: sessionPhrase,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: store,
     genid: (req) => {
       return uuidv4();

@@ -30,8 +30,8 @@ const BrandingLink = styled(Link)`
 function MainNav({ homeDetails, navigationDetails }) {
   const { route, title, alt } = homeDetails;
 
-  const { authUser } = useContext(UserContext);
-  console.log(`Auth user: `, authUser);
+  const { user } = useContext(UserContext);
+  console.log(`Auth user: `, user);
 
   // Navigation options will need to vary depending on if the current user is authenticated
   // Not Auth: Login / Register

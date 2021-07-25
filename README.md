@@ -53,3 +53,9 @@ The project will be developed in stages with core functionality and features int
 - July 20th. Added Register Component and controller.
 
 - July 21st. Added Login Component and controller. Added ContextAPI for state management.
+
+- July 22nd. Researching further express-sessions to integrate into state and user authentication.
+
+- July 23rd. Researching ContextAPI and useReducer to provide app wide state management.
+
+- July 24th. Added reducer, dispatch. Added user authenticated credentials

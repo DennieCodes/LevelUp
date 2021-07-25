@@ -6,9 +6,7 @@ export const login = async (email, password) => {
     const response = await axios.post("users/login", { email, password });
 
     // Response.data captures the res.send coming from the server
-    // console.log("The response was: ", response.data);
-
-    // We need to implement some kind of alert notification to the user indication login success
+    return response.data;
   } catch (error) {
     console.log("There was an error: ", error.response.data.errors);
 
